@@ -43,6 +43,12 @@ export default class App extends React.Component {
     );
   };
 
+  deleteContact = (contactId) => {
+    this.setState((pState) => ({
+      contacts: pState.contacts.filter((contact) => contact.id !== contactId),
+    }));
+  };
+
   render() {
     return (
       <>
@@ -50,7 +56,10 @@ export default class App extends React.Component {
         <ContactForm onSubmit={this.appendDBase} />
         <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
-        <ContactList dBase={this.getFilterContacts()} />
+        <ContactList
+          dBase={this.getFilterContacts()}
+          onDeleteContact={this.deleteContact}
+        />
       </>
     );
   }
