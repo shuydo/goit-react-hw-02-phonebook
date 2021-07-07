@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Filter({ value, onChange }) {
   return (
     <>
@@ -6,3 +8,8 @@ export default function Filter({ value, onChange }) {
     </>
   );
 }
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

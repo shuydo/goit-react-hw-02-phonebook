@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ContactList({ dBase, onDeleteContact }) {
   return (
     <ol>
@@ -7,11 +9,7 @@ export default function ContactList({ dBase, onDeleteContact }) {
             <span>
               {el.name}: {el.number + "  "}
             </span>
-            <button
-              type="button"
-              // className="TodoList__btn"
-              onClick={() => onDeleteContact(el.id)}
-            >
+            <button type="button" onClick={() => onDeleteContact(el.id)}>
               Delete
             </button>
           </p>
@@ -20,3 +18,8 @@ export default function ContactList({ dBase, onDeleteContact }) {
     </ol>
   );
 }
+
+ContactList.propTypes = {
+  dBase: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};
