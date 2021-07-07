@@ -5,13 +5,15 @@ export default function Contacts({ dBase }) {
   return (
     <div>
       <h2>Contacts</h2>
-      <ul>
+      <ol>
         {dBase.map((el) => (
           <li key={el.id}>
-            <p>{el.name}</p>
+            <p>
+              {el.name}: {el.number}
+            </p>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
