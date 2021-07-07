@@ -17,15 +17,18 @@ export default class App extends React.Component {
   };
 
   appendDBase = (data) => {
-    this.setState((pState) => ({
-      contacts: [
-        ...pState.contacts,
-        {
-          id: nanoid(10),
-          ...data,
-        },
-      ],
-    }));
+    if (this.state.contacts.map((el) => el.name).includes(data.name))
+      alert(`${data.name} is already in contacts.`);
+    else
+      this.setState((pState) => ({
+        contacts: [
+          ...pState.contacts,
+          {
+            id: nanoid(10),
+            ...data,
+          },
+        ],
+      }));
   };
 
   changeFilter = (e) => {
