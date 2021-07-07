@@ -1,10 +1,9 @@
-import React from "react";
-// import { v4 as uuid } from "uuid";
+import React from "react"; // import { v4 as uuid } from "uuid";
 import { nanoid } from "nanoid";
 
-import Form from "./Comps/Form/Form";
-import Contacts from "./Comps/Contacts/Contacts";
-import Filter from "./Comps/Filter";
+import ContactForm from "./Comps/ContactForm/ContactForm";
+import ContactList from "./Comps/ContactList/ContactList";
+import Filter from "./Comps/Filter/Filter";
 
 export default class App extends React.Component {
   state = {
@@ -33,21 +32,22 @@ export default class App extends React.Component {
     this.setState({ filter: e.target.value });
   };
 
-  render() {
-    // console.log("---", this.state.contacts);
+  getFilterContacts = () => {
     const filterLowerC = this.state.filter.toLowerCase();
-    const filterContacts = this.state.contacts.filter((contact) =>
+
+    return this.state.contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filterLowerC)
     );
-    console.log(filterContacts);
+  };
 
+  render() {
     return (
       <>
-        <h2>Phonebook</h2>
-        <Form onSubmit={this.appendDBase} />
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.appendDBase} />
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
-        {/* <Contacts dBase={this.state.contacts} /> */}
-        <Contacts dBase={filterContacts} />
+        <ContactList dBase={this.getFilterContacts()} />
       </>
     );
   }

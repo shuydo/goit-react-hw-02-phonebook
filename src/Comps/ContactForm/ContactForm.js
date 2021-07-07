@@ -1,9 +1,8 @@
 import { Component } from "react";
 
-export default class Form extends Component {
+export default class ContactForm extends Component {
   state = {
     name: "",
-    // phone: "",
     number: "",
   };
 
@@ -15,13 +14,11 @@ export default class Form extends Component {
     e.preventDefault();
     this.props.onSubmit(this.state);
     this.setState({ name: "", number: "" });
-    // this.setState({ name: "" });
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {/* <label> */}
         <h3>Name</h3>
         <input
           type="text"
@@ -32,12 +29,8 @@ export default class Form extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
-        {/* </label> */}
 
-        {/* <label>
-          Phone */}
         <h3>Number</h3>
-
         <input
           type="tel"
           name="number"
@@ -47,7 +40,7 @@ export default class Form extends Component {
           value={this.state.number}
           onChange={this.handleChange}
         />
-        {/* </label> */}
+
         <button type="submit" style={{ marginLeft: 10 }}>
           Add contact
         </button>
